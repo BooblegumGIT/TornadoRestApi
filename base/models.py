@@ -30,7 +30,7 @@ class BaseModel(Model):
             args_dict = args[0]
             for key in error.messages.keys():
                 del args_dict[key]
-            print(args_dict)
+            # print(args_dict)
             super(BaseModel, self).__init__(args_dict, *args, **kwargs)
 
     @property

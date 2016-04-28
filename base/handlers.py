@@ -1,12 +1,12 @@
 import tornado.web
 from tornado import gen
-# import json
 import bson.json_util
 
 
 class BaseHandler(tornado.web.RequestHandler):
     def initialize(self, **kwargs):
-        super(BaseHandler, self).initialize(**kwargs)
+        # print("BaseHandler init kwargs =", kwargs)
+        # super(BaseHandler, self).initialize()
         self.db = self.settings['db']
         self.current_user = None
 
@@ -23,7 +23,7 @@ class BaseHandler(tornado.web.RequestHandler):
 
     @gen.coroutine
     def get_current_user(self):
-        from users.models import UserModel
+        from accounts.models import UserModel
         email = self.current_user
         if email:
             # TODO cache

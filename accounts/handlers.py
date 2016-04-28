@@ -1,7 +1,7 @@
 import logging
 import json
 from tornado import gen
-from users.models import UserModel
+from accounts.models import UserModel
 from base.handlers import BaseHandler
 from bson.objectid import ObjectId
 from schematics.exceptions import ModelConversionError, ModelValidationError
@@ -16,9 +16,6 @@ l = logging.getLogger(__name__)
 
 
 class RegisterHandler(BaseHandler):
-    def initialize(self, **kwargs):
-        super(RegisterHandler, self).initialize(**kwargs)
-        self.db = self.settings['db']
 
     def get(self):
         self.write('GET: OK')
